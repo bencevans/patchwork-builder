@@ -35,18 +35,23 @@
       "node_modules/sodium-native/prebuilds/${os}-${arch}/electron-57.node",
       "node_modules/sodium-native/prebuilds/${os}-${arch}/libsodium.*"
     ],
-
     "mac": {
       "icon": "build/icon.icns",
       "target": "dmg",
-      "publish": ["github"],
+      "publish": [
+        "github"
+      ],
       "files": [
         "node_modules/sodium-native/prebuilds/darwin-${arch}/electron-57.node",
         "node_modules/sodium-native/prebuilds/darwin-${arch}/libsodium.*"
       ]
     },
     "linux": {
-      "category": "Network"
+      "category": "Network",
+      "target": [
+        "AppImage",
+        "snap"
+      ]
     },
     "win": {
       "icon": "build/icon.ico",
@@ -56,11 +61,15 @@
         "node_modules/sodium-native/prebuilds/win32-${arch}/libsodium.*"
       ]
     },
+    "snap": {
+      "confinement": "classic",
+      "grade": "stable"
+    },
     "dmg": {
       "icon": "build/dmg-icon.icns",
       "artifactName": "Patchwork-${version}-mac.${ext}"
     },
-    "appImage":  {
+    "appImage": {
       "artifactName": "Patchwork-${version}-linux-${arch}.${ext}"
     },
     "nsis": {
@@ -72,6 +81,6 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "~1.8.1",
-    "electron-builder": "^19.46.9"
+    "electron-builder": "^19.55.3"
   }
 }
